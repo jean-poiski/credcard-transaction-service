@@ -1,3 +1,44 @@
 spring:
-    application:
-        name: credcard-transaction-service
+  application:
+    name: credcard-transaction-service
+  devtools:
+    restart:
+      enabled: true
+    livereload:
+      enabled: false
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/credcarddb?stringtype=unspecified
+    username: postgres
+    password: postgres
+    hikari:
+      minimum-idle: 10
+      maximum-pool-size: 15
+      connection-timeout: 20000
+      idle-timeout: 10000
+      max-lifetime: 600000
+      leak-detection-threshold: 15000
+      pool-name: "CredCartTransactionsPool"
+      data-source-properties:
+        cachePrepStmts: true
+        prepStmtCacheSize: 500
+        prepStmtCacheSqlLimit: 2048
+        useServerPrepStmts: true
+  jpa:
+    database: POSTGRESQL
+    generate-ddl: false
+    properties:
+      hibernate:
+        batch_versioned_data: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        generate_statistics: false
+        jdbc:
+          batch_size: 50
+        order_inserts: true
+        order_updates: true
+        temp:
+          use_jdbc_metadata_defaults: false
+    show-sql: false
+  config:
+    activate:
+      on-profile: dev, test
