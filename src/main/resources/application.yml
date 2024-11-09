@@ -1,9 +1,11 @@
 server:
   port: 8080
-
+  servlet:
+    context-path: "/${spring.application.api-version}"
 spring:
   application:
     name: credcard-transaction-service
+    api-version: v1
   devtools:
     restart:
       enabled: true

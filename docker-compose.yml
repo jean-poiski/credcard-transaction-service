@@ -8,3 +8,23 @@ services:
       POSTGRES_USER: postgres
     volumes:
       - ./config/init.sql:/docker-entrypoint-initdb.d/init.sql
+  rabbitmq:
+    container_name: rabbitmq
+    image: rabbitmq:3.11.9-management-alpine
+    hostname: rabbitmq
+    networks:
+      - compose-network
+    ports:
+      - 5672:5672
+      - 15672:15672
+      - 61613:61613
+    volumes:
+      - ./rabbitmq-conf/my.conf:/etc/rabbitmq/rabbitmq.config
+      - ./rabbitmq-conf/plugins:/etc/rabbitmq/enabled_plugins
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 300M
+        reservations:
+          memory: 128M

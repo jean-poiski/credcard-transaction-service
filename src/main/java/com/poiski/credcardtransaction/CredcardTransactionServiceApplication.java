@@ -3,6 +3,7 @@ package com.poiski.credcardtransaction;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,7 +11,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 @Slf4j
-@SpringBootApplication
+@SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
 public class CredcardTransactionServiceApplication {
 
 	public static void main(String[] args) {
