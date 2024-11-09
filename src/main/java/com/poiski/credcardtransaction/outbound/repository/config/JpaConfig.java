@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @Configuration
 @EnableAutoConfiguration
-@EnableJpaRepositories("repository")
-@ComponentScan("entity")
+@EnableJpaRepositories("com.poiski.credcardtransaction")
+@ComponentScan("com.poiski.credcardtransaction")
 public class JpaConfig {
 }

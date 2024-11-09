@@ -25,4 +25,9 @@ public class Account implements BasicDomain {
   private BigDecimal foodAmount;
   private BigDecimal mealAmount;
   private BigDecimal cashAmount;
+
+  public boolean isToUseCashAmount(BigDecimal amount) {
+    return (foodAmount.compareTo(amount) < 0 || mealAmount.compareTo(amount) < 0);
+  }
+
 }
